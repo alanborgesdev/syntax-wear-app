@@ -1,76 +1,14 @@
 import IconCart from "@/assets/images/icon-cart.png";
-import { useState } from "react";
-
-import MensTreeDasher from "@/assets/images/tree-dasher-2-natural-black-boyal-blue.webp";
-import MensTreeRunnerNz from "@/assets/images/tree-runner-nz-weathered-brown.webp";
-import MensWoolCruiser from "@/assets/images/wool-cruiser-burgundy.webp";
-import MensWoolCruiserSlipOn from "@/assets/images/wool-cruiser-slip-on-dark-grey.webp";
-import MensWoolCruiserWaterproof from "@/assets/images/wool-cruiser-waterproof-natural-black.webp";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import formatCurrency from "../../utils/format-currency";
-
-const productsInCart = [
-    { id: 1, name: "Produto 1", image: MensTreeDasher, price: 35, quantity: 5 },
-    {
-        id: 2,
-        name: "Produto 2",
-        image: MensTreeRunnerNz,
-        price: 75,
-        quantity: 2,
-    },
-    {
-        id: 3,
-        name: "Produto 3",
-        image: MensWoolCruiser,
-        price: 85,
-        quantity: 4,
-    },
-    {
-        id: 4,
-        name: "Produto 4",
-        image: MensWoolCruiserSlipOn,
-        price: 135,
-        quantity: 6,
-    },
-    {
-        id: 5,
-        name: "Produto 5",
-        image: MensWoolCruiserWaterproof,
-        price: 15,
-        quantity: 2,
-    },
-    { id: 1, name: "Produto 1", image: MensTreeDasher, price: 35, quantity: 5 },
-    {
-        id: 2,
-        name: "Produto 2",
-        image: MensTreeRunnerNz,
-        price: 75,
-        quantity: 2,
-    },
-    {
-        id: 3,
-        name: "Produto 3",
-        image: MensWoolCruiser,
-        price: 85,
-        quantity: 4,
-    },
-    {
-        id: 4,
-        name: "Produto 4",
-        image: MensWoolCruiserSlipOn,
-        price: 135,
-        quantity: 6,
-    },
-    {
-        id: 5,
-        name: "Produto 5",
-        image: MensWoolCruiserWaterproof,
-        price: 15,
-        quantity: 2,
-    },
-];
 
 export const ShoppingCart = () => {
     const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+    const { cart, removeFromCart, incrementInCart, decrementInCart } =
+        useContext(CartContext);
+
+    console.log("items no carrinho", cart);
 
     return (
         <>
@@ -93,23 +31,26 @@ export const ShoppingCart = () => {
                 >
                     <header className="flex items-center justify-between px-5">
                         <p className="text-2xl font-bold">
-                            Carrinho ({productsInCart.length}
+                            Carrinho ({cart.length})
                         </p>
                         <button
                             className="text-2xl cursor-pointer"
-                            onClick={() => setCartIsOpen(!cartIsOpen)}
+                            onClick={() => setCartIsOpen(false)}
                         >
                             X
                         </button>
                     </header>
 
                     <ul className="p-4 overflow-y-auto scrollbar-hide h-[calc(100%-140px)] flex flex-col gap-3">
-                        {productsInCart.map((product) => (
+                        {cart.map((product) => (
                             <li
                                 key={product.id}
                                 className="flex flex-col gap-1 px-6"
                             >
-                                <button className="self-end text-xs cursor-pointer">
+                                <button
+                                    className="self-end text-xs cursor-pointer"
+                                    onClick={() => removeFromCart(product.id)}
+                                >
                                     X
                                 </button>
 
@@ -136,11 +77,21 @@ export const ShoppingCart = () => {
                                         </p>
 
                                         <div className="border flex gap-6 py-1 px-3">
-                                            <button className="cursor-pointer">
+                                            <button
+                                                className="cursor-pointer"
+                                                onClick={() =>
+                                                    decrementInCart(product)
+                                                }
+                                            >
                                                 -
                                             </button>
                                             <p>{product.quantity}</p>
-                                            <button className="cursor-pointer">
+                                            <button
+                                                className="cursor-pointer"
+                                                onClick={() =>
+                                                    incrementInCart(product)
+                                                }
+                                            >
                                                 +
                                             </button>
                                         </div>
