@@ -1,9 +1,10 @@
 import { createContext } from "react";
-import type { ProductCart } from "./CartProvider";
 import type { Product } from "../interfaces/product";
+import type { ProductCart } from "./CartProvider";
 
 interface CartContextType {
     cart: ProductCart[];
+    totalItems: number;
     addToCart: (product: Product) => void;
     removeFromCart: (productId: number) => void;
     incrementInCart: (product: ProductCart) => void;

@@ -5,18 +5,26 @@ import formatCurrency from "../../utils/format-currency";
 
 export const ShoppingCart = () => {
     const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
-    const { cart, removeFromCart, incrementInCart, decrementInCart } =
-        useContext(CartContext);
-
-    console.log("items no carrinho", cart);
+    const {
+        cart,
+        totalItems,
+        removeFromCart,
+        incrementInCart,
+        decrementInCart,
+    } = useContext(CartContext);
 
     return (
         <>
             <button
-                className="cursor-pointer"
+                className="relative cursor-pointer"
                 onClick={() => setCartIsOpen(!cartIsOpen)}
             >
                 <img src={IconCart} alt="Ícone carrinho de compras" />
+                {totalItems > 0 && (
+                    <span className="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1 text-xs font-bold leading-none text-white">
+                        {totalItems}
+                    </span>
+                )}
             </button>
 
             {/* { Overlay } */}
