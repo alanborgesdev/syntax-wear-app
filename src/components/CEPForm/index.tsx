@@ -66,12 +66,12 @@ export const CEPForm = () => {
                         aria-label="CEP"
                         aria-invalid={Boolean(errors.cep)}
                         className={`border rounded-md p-3 ${
-                            errors.cep ? "border-red-500" : "border-[#c0c0c0]"
+                            errors.cep ? "border-error" : "border-border]"
                         }`}
                         {...register("cep")}
                     />
                     {errors.cep && (
-                        <p className="text-sm text-red-600" role="alert">
+                        <p className="text-sm text-error" role="alert">
                             {errors.cep.message}
                         </p>
                     )}
@@ -87,7 +87,7 @@ export const CEPForm = () => {
 
             {addressError && (
                 <div className="mt=4">
-                    <p className="text-red-600 text-sm">{addressError}</p>
+                    <p className="text-error text-sm">{addressError}</p>
                 </div>
             )}
 

@@ -8,7 +8,7 @@ export const SubscriptionForm = () => {
                 name="nesletter"
                 placeholder="email@email.com"
                 className="rounded-[30px] bg-white py- px-5
-                placeholder-[#aaaaaa]"
+                placeholder-border-alt"
             />
         </form>
     );

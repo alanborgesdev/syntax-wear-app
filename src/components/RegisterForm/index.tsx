@@ -11,13 +11,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.email
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="email"
                     {...register("email")}
                 />
                 {errors.email && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.email.message}
                     </p>
                 )}
@@ -30,13 +30,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.senha
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="password"
                     {...register("senha")}
                 />
                 {errors.senha && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.senha.message}
                     </p>
                 )}
@@ -51,13 +51,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.confirmarSenha
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="password"
                     {...register("confirmarSenha")}
                 />
                 {errors.confirmarSenha && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.confirmarSenha.message}
                     </p>
                 )}
@@ -70,13 +70,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.primeiroNome
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="text"
                     {...register("primeiroNome")}
                 />
                 {errors.primeiroNome && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.primeiroNome.message}
                     </p>
                 )}
@@ -89,13 +89,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.ultimoNome
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="text"
                     {...register("ultimoNome")}
                 />
                 {errors.ultimoNome && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.ultimoNome.message}
                     </p>
                 )}
@@ -108,13 +108,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.cpf
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="text"
                     {...register("cpf")}
                 />
                 {errors.cpf && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.cpf.message}
                     </p>
                 )}
@@ -129,13 +129,13 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.dataNascimento
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="date"
                     {...register("dataNascimento")}
                 />
                 {errors.dataNascimento && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.dataNascimento.message}
                     </p>
                 )}
@@ -148,19 +148,19 @@ export const RegisterForm = () => {
                     className={`w-full border rounded-xs px-1 mt-1 focus:outline-none focus:ring-2 ${
                         errors.phone
                             ? "border-red-500 focus:ring-red-400"
-                            : "border-gray-300 focus:ring-[#5433eb]"
+                            : "border-border focus:ring-accent"
                     }`}
                     type="tel"
                     {...register("phone")}
                 />
                 {errors.phone && (
-                    <p className="text-xs text-red-600 mt-1">
+                    <p className="text-xs text-error mt-1">
                         {errors.phone.message}
                     </p>
                 )}
             </div>
 
-            <button disabled={isSubmitting} className="bg-[#5433EB] text-white font-semibold uppercase rounded-md py-3 tracking-all hover:bg[#4028c7] disabled:opacity-50 w-full cursor-pointer">
+            <button disabled={isSubmitting} className="bg-accent text-white font-semibold uppercase rounded-md py-3 tracking-all hover:bg-accent-hover disabled:opacity-50 w-full cursor-pointer">
                 {isSubmitting ? "Enviando..." : "Continuar" }
             </button>
         </form>
