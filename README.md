@@ -1,75 +1,79 @@
-# React + TypeScript + Vite
+# SyntaxWear
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SyntaxWear é uma vitrine de e-commerce de calçados, criada como aplicação frontend. O projeto apresenta a marca, permite explorar produtos por categoria e visualizar detalhes dos itens, além de oferecer telas de cadastro e login.
 
-Currently, two official plugins are available:
+> Os produtos são dados locais de demonstração. O carrinho fica salvo no `localStorage` do navegador. Não há backend para autenticação, cadastro de clientes ou finalização de pedidos. A consulta de CEP usa a API pública ViaCEP, e o valor de entrega é estimado por região.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+- Página inicial com destaque, categorias e galeria.
+- Catálogo de produtos, páginas de categoria e detalhes de cada produto.
+- Carrinho com inclusão, remoção e alteração de quantidade, persistido no navegador.
+- Consulta de endereço e estimativa de frete por CEP.
+- Páginas institucionais sobre a marca e suas lojas.
+- Telas de login e cadastro, com validação de campos no formulário de cadastro.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologias
 
-## Expanding the ESLint configuration
+- React 19 e TypeScript
+- Vite 8
+- TanStack Router, com rotas organizadas por arquivos
+- Tailwind CSS 4
+- React Hook Form e Zod para formulários e validação
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requisitos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js em uma versão compatível com Vite 8
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Como executar
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone o repositório e acesse a pasta do projeto.
+2. Instale as dependências:
 
-```
+   ```bash
+   npm ci
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Inicie o servidor de desenvolvimento:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   npm run dev
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Abra no navegador o endereço informado pelo Vite no terminal (normalmente `http://localhost:5173`).
 
+## Comandos disponíveis
+
+| Comando | Descrição |
+| --- | --- |
+| `npm run dev` | Inicia o servidor local de desenvolvimento com atualização automática. |
+| `npm run build` | Verifica os tipos TypeScript e gera a versão de produção em `dist/`. |
+| `npm run preview` | Serve localmente a versão de produção já compilada. Execute `npm run build` antes. |
+| `npm run lint` | Executa o ESLint no projeto. |
+
+## Rotas principais
+
+| Caminho | Página |
+| --- | --- |
+| `/` | Página inicial |
+| `/products` | Catálogo |
+| `/products/category/:category` | Produtos de uma categoria |
+| `/products/:productId` | Detalhes do produto |
+| `/about` | Sobre a marca |
+| `/our-stores` | Lojas |
+| `/sign-in` | Login |
+| `/sign-up` | Cadastro |
+
+## Estrutura do projeto
+
+```text
+src/
+├── components/   # Componentes da interface, como cabeçalho, produtos e formulários
+├── contexts/     # Contexto e estado do carrinho
+├── interfaces/   # Tipos e interfaces TypeScript
+├── mocks/        # Dados locais de produtos e categorias
+├── pages/        # Páginas e rotas da aplicação
+├── styles/       # Estilos globais
+└── utils/        # Funções utilitárias
 ```
